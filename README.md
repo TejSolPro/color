@@ -74,6 +74,18 @@ pnpm test
 pnpm build
 ```
 
+## AI-agent contributions
+
+The repository includes one canonical set of instructions for coding agents in
+[`AGENTS.md`](AGENTS.md), with adapters for Claude Code and GitHub Copilot. This
+keeps project rules consistent across ChatGPT/Codex, Claude, Copilot, Cursor,
+Gemini, and other tools that can read repository context.
+
+Use the **Agent-ready task** issue form for bounded work. When the optional Claude
+Code GitHub integration is enabled by the maintainers, a write-access contributor
+can mention `@claude` in an issue or pull-request comment to request analysis or a
+code change.
+
 ## Roadmap
 
 The planned V1 includes a versioned source registry, structured brief schema, candidate ranking, semantic role assignment, WCAG 2.2 auditing, CSS and DTCG exporters, a CLI, and an evaluation harness. See [ROADMAP.md](ROADMAP.md).

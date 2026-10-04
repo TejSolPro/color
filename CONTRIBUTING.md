@@ -9,6 +9,11 @@ Thank you for helping improve Color by Tej SolPro.
 3. Keep behavior deterministic and explain new heuristics with tests.
 4. Do not contribute palette data without a documented redistribution basis.
 
+Human and AI contributors follow the same standards. Coding agents should read
+[`AGENTS.md`](AGENTS.md) before planning or editing. Maintainers can use the
+**Agent-ready task** issue form to describe bounded work with verifiable acceptance
+checks.
+
 ## Local checks
 
 ```bash
@@ -19,6 +24,10 @@ pnpm build
 ```
 
 Pull requests should describe the user problem, the chosen approach, validation performed, and any accessibility or provenance implications.
+
+If the Claude Code GitHub integration is enabled, maintainers with repository
+write access can mention `@claude` in an issue or pull-request comment. The
+request should be focused and should reference the issue's acceptance checks.
 
 ## Licensing contributions
 
