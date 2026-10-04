@@ -63,7 +63,13 @@ h1 em { color: var(--rust); font-weight: 400; }
 .lede { max-width: 680px; margin: 38px 0 28px; font-size: clamp(19px, 2.2vw, 28px); line-height: 1.35; }
 .actions { display: flex; align-items: center; gap: 25px; }
 .text-link { font-weight: 700; text-underline-offset: 5px; }
-.palette { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 100px; border: 1px solid var(--line); }
+.agent-flow { list-style: none; display: grid; grid-template-columns: repeat(5,1fr); padding: 0; margin: 86px 0 0; border: 1px solid var(--line); }
+.agent-flow li { position: relative; min-height: 92px; padding: 17px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid var(--line); }
+.agent-flow li:not(:last-child)::after { content: "→"; position: absolute; right: -9px; top: 34px; z-index: 1; padding: 0 3px; color: var(--rust); background: var(--paper); font-weight: 800; }
+.agent-flow li:last-child { color: var(--paper); background: var(--rust); border-right: 0; }
+.agent-flow small { font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+.agent-flow b { font-size: 14px; }
+.palette { display: grid; grid-template-columns: repeat(5, 1fr); margin-top: 18px; border: 1px solid var(--line); }
 .palette span { position: relative; min-height: 158px; padding: 18px; display: flex; flex-direction: column; justify-content: end; color: white; background: var(--swatch); }
 .palette span:nth-child(2), .palette span:nth-child(5) { color: var(--ink); }
 .palette b { font-size: 13px; }
@@ -216,6 +222,9 @@ footer a { font-weight: 750; text-underline-offset: 4px; }
   .site-nav .button { min-height: 32px; }
   .palette { grid-template-columns: 1fr; }
   .palette span { min-height: 92px; }
+  .agent-flow { grid-template-columns: 1fr; margin-top: 60px; }
+  .agent-flow li { min-height: 74px; border-right: 0; border-bottom: 1px solid var(--line); }
+  .agent-flow li:not(:last-child)::after { content: "↓"; right: 18px; top: auto; bottom: -10px; }
   .manifesto, .section-heading, .evidence-grid { grid-template-columns: 1fr; }
   .pipeline ol, .roadmap-grid, .feature-grid, .card-grid, .recipe-grid { grid-template-columns: 1fr; }
   .tool-layout, .intro-grid, .example { grid-template-columns: 1fr; }
