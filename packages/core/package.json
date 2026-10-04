@@ -1,0 +1,21 @@
+{
+  "name": "@tejsolpro/color",
+  "version": "0.0.0",
+  "description": "Deterministic color intelligence primitives for AI-built interfaces.",
+  "type": "module",
+  "license": "MPL-2.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.test.json && node --test .test-dist/test/*.test.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

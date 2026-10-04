@@ -1,0 +1,20 @@
+{
+  "name": "color-by-tej-solpro",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Open-source color intelligence for AI-built interfaces.",
+  "license": "MPL-2.0",
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm --recursive build",
+    "test": "pnpm --recursive test",
+    "typecheck": "pnpm --filter @tejsolpro/color build && pnpm --recursive typecheck"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
