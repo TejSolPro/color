@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Turn one brand color into an accessible semantic color foundation." />
+    <meta name="theme-color" content="#f3efe7" />
+    <title>Color Playground · Color by Tej SolPro</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="nav shell">
+      <a class="brand" href="../"><span class="brand-mark" aria-hidden="true"></span><span>Color <small>by Tej SolPro</small></span></a>
+      <nav aria-label="Primary navigation"><a href="../recipes/">Recipes</a><a href="../guides/">Guides</a><a href="../examples/">Examples</a><a class="button button-small" href="https://github.com/TejSolPro/color">GitHub</a></nav>
+    </header>
+    <main>
+      <section class="page-hero shell">
+        <div class="breadcrumbs"><a href="../">Home</a> / Playground</div>
+        <p class="eyebrow">Runs entirely in your browser</p>
+        <h1>One color.<br /><em>A working foundation.</em></h1>
+        <p class="lede">Give a brand color a job. Color generates deterministic interface roles, checks the important pair, and exports usable CSS.</p>
+      </section>
+      <section class="tool-layout shell" aria-label="Color system generator">
+        <div class="tool-panel">
+          <p class="kicker">Inputs</p><h2>Your starting point</h2>
+          <div class="field"><label for="brandHex">Brand color</label><div class="color-input"><input id="brandPicker" type="color" value="#9d3f2d" aria-label="Choose brand color" /><input id="brandHex" type="text" value="#9D3F2D" maxlength="7" inputmode="text" /></div></div>
+          <div class="field"><label for="surfaceHex">Canvas color</label><div class="color-input"><input id="surfacePicker" type="color" value="#f3efe7" aria-label="Choose canvas color" /><input id="surfaceHex" type="text" value="#F3EFE7" maxlength="7" inputmode="text" /></div></div>
+          <p class="tool-note">This first playground uses transparent, deterministic color transformations. It does not send your colors to a server.</p>
+        </div>
+        <div class="tool-output" aria-live="polite">
+          <p class="kicker">Generated system</p><h2>Semantic preview</h2>
+          <div class="generated-preview" id="preview"><div><span class="status" id="contrastStatus">Checking contrast</span><h3>Clarity earns trust.</h3><p>Each role exists for a reason—and every important pair can be tested.</p></div><span class="preview-button" id="previewButton">Primary action</span></div>
+          <div class="token-list" id="tokenList"></div>
+          <div class="tool-actions"><button class="button" id="copyCss" type="button">Copy CSS</button><button class="button button-secondary" id="resetTool" type="button">Reset</button></div>
+          <p class="result-message" id="copyMessage"></p>
+        </div>
+      </section>
+    </main>
+    <footer class="shell"><span>Color by Tej SolPro</span><span>MPL-2.0 · Built in the open</span></footer>
+    <script src="./playground.js"></script>
+  </body>
+</html>
