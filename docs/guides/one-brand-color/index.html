@@ -1,14 +1,61 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="A practical guide to turning one brand color into semantic interface roles." /><title>From one brand color to interface roles · Color</title><link rel="icon" href="../../favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="../../styles.css" /></head>
-<body><header class="nav shell"><a class="brand" href="../../"><span class="brand-mark"></span><span>Color <small>by Tej SolPro</small></span></a><nav><a href="../../playground/">Playground</a><a href="../../recipes/">Recipes</a><a href="../">Guides</a><a class="button button-small" href="https://github.com/TejSolPro/color">GitHub</a></nav></header>
+<body><header class="nav shell"><a class="brand" href="../../"><span class="brand-mark"></span><span>Color <small>by Tej SolPro</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="../../playground/">Playground</a><a href="../../recipes/">Recipes</a><a aria-current="page" href="../">Guides</a><a href="../../examples/">Examples</a><a href="../../documentation/">Docs</a><a class="button button-small" href="https://github.com/TejSolPro/color">GitHub</a></nav></header>
 <main><section class="page-hero shell"><div class="breadcrumbs"><a href="../../">Home</a> / <a href="../">Guides</a> / One brand color</div><p class="eyebrow">Guide 01 · 6 minute read</p><h1>From one brand color<br /><em>to interface roles.</em></h1><p class="lede">Your brand color is an input, not a complete system. Give it a specific job before generating anything around it.</p></section>
-<section class="content-section shell"><article class="prose">
-  <p>A logo may need one memorable color. An interface needs colors for surfaces, text, actions, borders, focus, feedback, disabled states, and interaction. Treating the original brand color as the answer to all of these creates inconsistency—and often poor contrast.</p>
-  <h2>1. Choose the first job</h2><p>Decide where the brand color matters most. For many products, that is the primary action. For editorial products, it may be emphasis or navigation. Assigning one job prevents the color from becoming decoration everywhere.</p>
-  <h2>2. Select the canvas and text independently</h2><p>Start with a neutral canvas and a text color that can carry long-form reading. The brand color should not force every neutral to share its hue. Test the exact text-and-canvas pair at the sizes you will use.</p>
-  <h2>3. Derive states, not a rainbow</h2><p>Generate only what the interface needs: a hover state, a subtle background, a visible focus ring, and perhaps a selected state. Each derived color should record its parent and transformation.</p>
-  <h2>4. Test pairs in context</h2><p>Contrast is a relationship between foreground and background. Test button text on the primary color, body text on the canvas, links on their actual surfaces, and focus indicators against adjacent colors.</p>
-  <h2>5. Name by purpose</h2><p><code>--color-primary</code> tells an implementer how to use a token. <code>--red-600</code> only describes its appearance. Keep primitive values when helpful, but expose semantic roles to components and AI agents.</p>
-  <h3>A small first system is stronger than a large speculative palette.</h3><p>Begin with the roles you can explain and test. Add new roles when a real interface requirement appears—not because a generator can produce more swatches.</p>
-  <p><a class="button" href="../../playground/">Try it in the playground</a></p>
-</article></section></main><footer class="shell"><span>Color by Tej SolPro</span><span>MPL-2.0 · Built in the open</span></footer></body></html>
+<section class="content-section shell article-layout">
+  <aside class="article-menu" aria-label="On this page">
+    <p class="kicker">On this page</p>
+    <a href="#problem">The real problem</a><a href="#job">1. Choose the job</a><a href="#neutrals">2. Establish neutrals</a><a href="#states">3. Derive states</a><a href="#contrast">4. Test real pairs</a><a href="#tokens">5. Name by purpose</a><a href="#example">Worked example</a><a href="#checklist">Practical checklist</a>
+  </aside>
+  <article class="prose guide-prose">
+    <p class="article-intro">A logo may need one memorable color. An interface needs a coordinated set of colors for surfaces, text, actions, borders, focus, feedback, disabled controls, and interaction states. The mistake is assuming that the brand color—or a sequence of lighter and darker versions of it—already constitutes that system.</p>
+
+    <h2 id="problem">The real problem is assigning responsibility</h2>
+    <p>Imagine a company whose brand color is a vivid orange. The orange works beautifully in its logo, but white text on that orange may not meet the contrast needed for a normal-size button label. Darkening it until white passes might produce a technically compliant button, yet the new shade may no longer feel like the brand.</p>
+    <p>That is not simply a palette problem. It is a decision problem: where must the original color remain unchanged, where can it be transformed, and where should a different color perform the job?</p>
+    <div class="guide-callout"><b>Core principle</b><p>Preserve brand recognition where people notice identity. Optimise for usability where people must read, understand, or act.</p></div>
+
+    <h2 id="job">1. Choose the brand color’s first job</h2>
+    <p>Begin by naming the most important interface role the color should play. In a software product, that is often the primary action. In an editorial product, it might be links or highlighted passages. In a luxury brand, the signature color may work better as a restrained accent than as a large background.</p>
+    <p>Do not assign it everywhere at once. If the same color represents actions, warnings, selected states, decorative shapes, and data categories, users cannot learn what it means. One deliberate role creates a stable anchor for the rest of the system.</p>
+    <h3>Questions worth answering</h3>
+    <ul><li>Where does recognition matter more than visual volume?</li><li>Does the color need to carry text, or can it remain an accent?</li><li>Will people understand it as an action, a status, or decoration?</li><li>Does the role still work in dark mode and high-contrast contexts?</li></ul>
+
+    <h2 id="neutrals">2. Establish the canvas and reading colors separately</h2>
+    <p>The canvas and body text do most of the visual work in an interface. Choose them for sustained reading, hierarchy, and comfort—not simply because they resemble the brand hue.</p>
+    <p>A warm brand may benefit from a warm off-white canvas, but that relationship should be intentional. The body text can be a near-black with a subtle temperature rather than a fully saturated version of the brand color. This keeps large reading areas quiet and gives the brand color room to remain distinctive.</p>
+    <table class="role-table"><thead><tr><th>Role</th><th>What it must do</th><th>What to avoid</th></tr></thead><tbody><tr><td>Canvas</td><td>Support long sessions and clear grouping</td><td>Competing with content</td></tr><tr><td>Body text</td><td>Remain legible at common sizes</td><td>Using brand color by default</td></tr><tr><td>Muted text</td><td>Reduce emphasis while staying readable</td><td>Lowering opacity without testing</td></tr><tr><td>Border</td><td>Separate regions without becoming noise</td><td>Making every container prominent</td></tr></tbody></table>
+
+    <h2 id="states">3. Derive states from behavior—not from a desire for more swatches</h2>
+    <p>Once the primary role is known, add only the states required by actual components. A button may need default, hover, pressed, focus, and disabled treatments. A selected navigation item may need a subtle background and a stronger foreground. These are behavioral requirements, not an invitation to generate a ten-step rainbow.</p>
+    <p>Every derived value should retain a relationship to its source. Record whether it was mixed with the canvas, darkened for contrast, or replaced because the original could not satisfy the role. This makes the decision reproducible for designers, developers, and AI agents.</p>
+
+    <h2 id="contrast">4. Test the pairs people will actually see</h2>
+    <p>A color is neither accessible nor inaccessible on its own. Contrast belongs to a specific foreground and background pair. “Our green is accessible” is incomplete; “our white button label on the primary green measures 6.2:1” is a testable statement.</p>
+    <p>Evaluate body text on the canvas, button labels on every button state, links on their real surfaces, placeholders inside inputs, focus indicators against adjacent colors, and status text inside banners. Also remember that passing contrast does not guarantee that two colors communicate meaning clearly, particularly for people with color-vision differences.</p>
+    <div class="guide-callout guide-callout-dark"><b>Do not rely on color alone</b><p>Pair error, success, and warning colors with text, icons, or structure. Color should reinforce the message rather than carry it by itself.</p></div>
+
+    <h2 id="tokens">5. Name tokens by purpose</h2>
+    <p>A primitive such as <code>--rust-700</code> describes appearance. A semantic token such as <code>--color-action-primary</code> communicates responsibility. Components and AI coding agents should consume semantic tokens because those names survive a redesign.</p>
+    <p>Keep primitives underneath when they help document the source values, but expose roles at the implementation boundary. This gives teams the freedom to change a value once without searching through every component.</p>
+    <pre class="code-block"><code>:root {
+  --color-canvas: #f3efe7;
+  --color-text: #1c1a17;
+  --color-action-primary: #9d3f2d;
+  --color-on-action-primary: #ffffff;
+  --color-action-hover: #853523;
+  --color-focus-ring: #bc7e70;
+}</code></pre>
+
+    <h2 id="example">A worked example</h2>
+    <p>Suppose the starting brand color is <code>#9D3F2D</code>, a warm rust. We assign it to the primary action. A warm paper canvas, <code>#F3EFE7</code>, supports the personality without forcing the entire interface to become orange. Near-black <code>#1C1A17</code> becomes the main reading color.</p>
+    <p>White on the primary rust measures approximately 6.6:1, so it can support normal-size button text. The hover color is darkened modestly to make the interaction visible, while the subtle primary background is mixed toward the canvas for selected or highlighted regions. Each value has a job and a traceable reason to exist.</p>
+    <div class="article-palette" aria-label="Worked example color roles"><span style="--sample:#f3efe7;color:#1c1a17"><b>Canvas</b><small>#F3EFE7</small></span><span style="--sample:#1c1a17;color:#f3efe7"><b>Text</b><small>#1C1A17</small></span><span style="--sample:#9d3f2d;color:#fff"><b>Action</b><small>#9D3F2D</small></span><span style="--sample:#853523;color:#fff"><b>Hover</b><small>#853523</small></span></div>
+
+    <h2 id="checklist">A practical first-system checklist</h2>
+    <ol class="checklist"><li>The brand color has one clearly stated primary role.</li><li>Canvas and reading colors were chosen for content, not decoration.</li><li>Every generated shade maps to an actual component or state.</li><li>Contrast claims identify the exact foreground and background pair.</li><li>Errors and statuses do not rely on color alone.</li><li>Components consume semantic names rather than raw values.</li><li>Transformations and source colors remain documented.</li></ol>
+    <h3>A small explainable system is stronger than a large speculative palette.</h3>
+    <p>Start with the roles you can defend and test. Add another only when a real interface requirement appears. The goal is not to produce more color—it is to make fewer, better decisions.</p>
+    <div class="article-ending"><div><b>Turn your brand color into a first semantic system.</b><span>The playground runs locally in your browser.</span></div><a class="button button-light" href="../../playground/">Open the playground</a></div>
+  </article>
+</section></main><footer class="shell"><span>With love from <a href="https://tej9.com">Tej SolPro</a>.</span><span>MPL-2.0 · Built in the open</span></footer></body></html>
