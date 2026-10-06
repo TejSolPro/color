@@ -49,13 +49,22 @@ export function contrastRatio(foreground: string, background: string): number {
   return (lighter + 0.05) / (darker + 0.05);
 }
 
+/**
+ * Truncates (never rounds up) to two decimals so a reported ratio can never
+ * appear to meet a threshold that the unrounded value fails. WCAG compares
+ * the exact ratio, so 4.496 must not be shown as 4.50.
+ */
+function displayRatio(ratio: number): number {
+  return Math.floor(ratio * 100) / 100;
+}
+
 export function auditPair(foreground: string, background: string): ContrastAudit {
   const ratio = contrastRatio(foreground, background);
 
   return {
     foreground: normalizeHex(foreground),
     background: normalizeHex(background),
-    ratio: Number(ratio.toFixed(2)),
+    ratio: displayRatio(ratio),
     normalText: ratio >= 4.5,
     largeText: ratio >= 3,
     nonText: ratio >= 3,
