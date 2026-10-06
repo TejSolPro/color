@@ -19,7 +19,7 @@
         <div class="breadcrumbs"><a href="../">Home</a> / Playground</div>
         <p class="eyebrow">Runs entirely in your browser</p>
         <h1>One color.<br /><em>A working foundation.</em></h1>
-        <p class="lede">Give a brand color a job. Color generates deterministic interface roles, checks the important pair, and exports usable CSS.</p>
+        <p class="lede">Give a brand color a job. Color generates deterministic interface roles, audits every pair it creates, and exports usable CSS.</p>
       </section>
       <section class="tool-layout shell" aria-label="Color system generator">
         <div class="tool-panel">
@@ -32,12 +32,14 @@
           <p class="kicker">Generated system</p><h2>Semantic preview</h2>
           <div class="generated-preview" id="preview"><div><span class="status" id="contrastStatus">Checking contrast</span><h3>Clarity earns trust.</h3><p>Each role exists for a reason—and every important pair can be tested.</p></div><span class="preview-button" id="previewButton">Primary action</span></div>
           <div class="token-list" id="tokenList"></div>
+          <p class="kicker" style="margin-top:24px">Contrast evidence</p>
+          <div class="token-list" id="pairAudit" aria-label="Contrast audit for each generated pair"></div>
           <div class="tool-actions"><button class="button" id="copyCss" type="button">Copy CSS</button><button class="button button-secondary" id="resetTool" type="button">Reset</button></div>
           <p class="result-message" id="copyMessage"></p>
         </div>
       </section>
     </main>
     <footer class="shell"><span>With love from <a href="https://tej9.com">Tej SolPro</a>.</span><span>MPL-2.0 · Built in the open</span></footer>
-    <script src="./playground.js"></script>
+    <script type="module" src="./playground.js"></script>
   </body>
 </html>

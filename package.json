@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "pnpm --recursive build",
+    "build:docs": "pnpm --filter @tejsolpro/color build && cp packages/core/dist/index.js docs/playground/color-core.js",
     "test": "pnpm --recursive test",
     "typecheck": "pnpm --filter @tejsolpro/color build && pnpm --recursive typecheck"
   },
