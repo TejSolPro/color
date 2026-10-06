@@ -43,7 +43,7 @@ import { auditPair } from "@tejsolpro/color";
 
 const result = auditPair("#1c1a17", "#f3efe7");
 
-console.log(result.ratio);      // 15.14
+console.log(result.ratio);      // 15.13 (truncated, never rounded up)
 console.log(result.normalText); // WCAG AA result
 ```
 
@@ -73,6 +73,10 @@ pnpm install
 pnpm test
 pnpm build
 ```
+
+To preview the playground locally, run `pnpm build:docs` first. It copies the
+built core package into `docs/playground/color-core.js`, which the playground
+imports so the website and the package share one contrast implementation.
 
 ## AI-agent contributions
 
