@@ -6,7 +6,7 @@
 - [x] MPL-2.0 licensing decision
 - [x] Monorepo and automated-check foundation
 - [x] Initial WCAG contrast primitives
-- [ ] Public request, theme, audit, and provenance schemas
+- [x] Versioned one-brand request, theme, audit, and provenance schemas
 
 ## V1 — Palette-to-interface compiler
 
@@ -14,12 +14,12 @@
 - [ ] OKLab/OKLCH palette feature extraction
 - [ ] Structured visual-brief contract
 - [ ] Constraint-based candidate ranking
-- [ ] Locked brand-color support
-- [ ] Semantic role solver
-- [ ] Interaction-state validation
+- [x] Locked one-brand-color support
+- [x] One-brand semantic role compiler
+- [x] Primary hover, focus, and meaningful-boundary validation
 - [ ] DTCG JSON exporter
-- [ ] CSS custom-property exporter
-- [ ] Non-interactive CLI
+- [x] CSS custom-property exporter for one-brand themes
+- [x] Non-interactive contrast and one-brand-theme CLI
 - [ ] Portable agent skill
 
 ## Proof
@@ -38,3 +38,8 @@
 - [ ] Framework-specific exporters
 
 Public API stability begins at `1.0.0`. Until then, releases may change schemas as the evaluation evidence improves.
+
+## Release history
+
+- `0.1.0` — one locked brand color to semantic tokens, pair evidence,
+  provenance, JSON, CSS, CLI, and live playground. See [CHANGELOG.md](CHANGELOG.md).

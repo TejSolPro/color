@@ -16,10 +16,12 @@ about color psychology. Prefer deterministic, explainable design decisions.
 
 ## Current stage
 
-The project is in its foundation stage. The stable work today is:
+The project is at development release `0.1.0`. The stable work today is:
 
-- standards-based contrast calculation in `packages/core`;
-- a thin non-interactive adapter in `packages/cli`;
+- standards-based contrast calculation and the versioned One Brand Color
+  Compiler in `packages/core`;
+- JSON and CSS theme output through a thin non-interactive adapter in
+  `packages/cli`;
 - the static public site in `docs`;
 - architecture, provenance, contribution, and roadmap documentation.
 
@@ -86,4 +88,3 @@ wide viewport sizes and confirm that internal links still work.
 
 A pull request should explain the problem, approach, validation, accessibility
 impact, provenance impact, and any remaining trade-offs.
-

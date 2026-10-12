@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="A practical guide to turning one brand color into semantic interface roles." /><title>From one brand color to interface roles · Color</title><link rel="icon" href="../../favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="../../styles.css" /></head>
-<body><header class="nav shell"><a class="brand" href="../../"><span class="brand-mark"></span><span>Color <small>by Tej SolPro</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="../../playground/">Playground</a><a href="../../recipes/">Recipes</a><a aria-current="page" href="../">Guides</a><a href="../../examples/">Examples</a><a href="../../documentation/">Docs</a><a class="button button-small" href="https://github.com/TejSolPro/color" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></header>
+<body><header class="nav shell"><a class="brand" href="../../"><span class="brand-mark"></span><span>Color <small>by Tej SolPro</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="../../compiler/">Compiler</a><a href="../../playground/">Playground</a><a href="../../recipes/">Recipes</a><a aria-current="page" href="../">Guides</a><a href="../../examples/">Examples</a><a href="../../documentation/">Docs</a><a class="button button-small" href="https://github.com/TejSolPro/color" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></header>
 <main><section class="page-hero shell"><div class="breadcrumbs"><a href="../../">Home</a> / <a href="../">Guides</a> / One brand color</div><p class="eyebrow">Guide 01 · 6 minute read</p><h1>From one brand color<br /><em>to interface roles.</em></h1><p class="lede">Your brand color is an input, not a complete system. Give it a specific job before generating anything around it.</p></section>
 <section class="content-section shell article-layout">
   <aside class="article-menu" aria-label="On this page">
@@ -40,22 +40,27 @@
     <p>Keep primitives underneath when they help document the source values, but expose roles at the implementation boundary. This gives teams the freedom to change a value once without searching through every component.</p>
     <pre class="code-block"><code>:root {
   --color-canvas: #f3efe7;
-  --color-text: #1c1a17;
-  --color-action-primary: #9d3f2d;
-  --color-on-action-primary: #ffffff;
-  --color-action-hover: #853523;
-  --color-focus-ring: #bc7e70;
+  --color-surface: #f0e8e0;
+  --color-text: #171512;
+  --color-text-muted: #6f6c67;
+  --color-primary: #9d3f2d;
+  --color-on-primary: #ffffff;
+  --color-primary-hover: #843526;
+  --color-primary-subtle: #e5d3c9;
+  --color-border: #8c8983;
+  --color-primary-border: #9d3f2d;
+  --color-focus-ring: #b66f62;
 }</code></pre>
 
     <h2 id="example">A worked example</h2>
-    <p>Suppose the starting brand color is <code>#9D3F2D</code>, a warm rust. We assign it to the primary action. A warm paper canvas, <code>#F3EFE7</code>, supports the personality without forcing the entire interface to become orange. Near-black <code>#1C1A17</code> becomes the main reading color.</p>
-    <p>White on the primary rust measures approximately 6.6:1, so it can support normal-size button text. The hover color is darkened modestly to make the interaction visible, while the subtle primary background is mixed toward the canvas for selected or highlighted regions. Each value has a job and a traceable reason to exist.</p>
-    <div class="article-palette" aria-label="Worked example color roles"><span style="--sample:#f3efe7;color:#1c1a17"><b>Canvas</b><small>#F3EFE7</small></span><span style="--sample:#1c1a17;color:#f3efe7"><b>Text</b><small>#1C1A17</small></span><span style="--sample:#9d3f2d;color:#fff"><b>Action</b><small>#9D3F2D</small></span><span style="--sample:#853523;color:#fff"><b>Hover</b><small>#853523</small></span></div>
+    <p>Suppose the starting brand color is <code>#9D3F2D</code>, a warm rust. We assign it to the primary action. A warm paper canvas, <code>#F3EFE7</code>, supports the personality without forcing the entire interface to become orange. Near-black <code>#171512</code> becomes the main reading color.</p>
+    <p>White on the primary rust measures 6.59:1, so it can support normal-size button text. The compiler derives <code>#843526</code> for hover, <code>#E5D3C9</code> for a subtle primary surface, and <code>#B66F62</code> for focus. Every intended pair passes its declared WCAG 2.2 threshold, and every transformation remains visible in the output.</p>
+    <div class="article-palette" aria-label="Worked example color roles"><span style="--sample:#f3efe7;color:#171512"><b>Canvas</b><small>#F3EFE7</small></span><span style="--sample:#171512;color:#f3efe7"><b>Text</b><small>#171512</small></span><span style="--sample:#9d3f2d;color:#fff"><b>Action</b><small>#9D3F2D</small></span><span style="--sample:#843526;color:#fff"><b>Hover</b><small>#843526</small></span></div>
 
     <h2 id="checklist">A practical first-system checklist</h2>
     <ol class="checklist"><li>The brand color has one clearly stated primary role.</li><li>Canvas and reading colors were chosen for content, not decoration.</li><li>Every generated shade maps to an actual component or state.</li><li>Contrast claims identify the exact foreground and background pair.</li><li>Errors and statuses do not rely on color alone.</li><li>Components consume semantic names rather than raw values.</li><li>Transformations and source colors remain documented.</li></ol>
     <h3>A small explainable system is stronger than a large speculative palette.</h3>
     <p>Start with the roles you can defend and test. Add another only when a real interface requirement appears. The goal is not to produce more color—it is to make fewer, better decisions.</p>
-    <div class="article-ending"><div><b>Turn your brand color into a first semantic system.</b><span>The playground runs locally in your browser.</span></div><a class="button button-light" href="../../playground/">Open the playground</a></div>
+    <div class="article-ending"><div><b>Turn your brand color into a first semantic system.</b><span>Version 0.1.0 runs locally in your browser and exports JSON or CSS.</span></div><a class="button button-light" href="../../playground/">Compile your color</a></div>
   </article>
-</section></main><footer class="shell"><span>With love from <a href="https://tej9.com">Tej SolPro</a>.</span><span>MPL-2.0 · Built in the open</span></footer></body></html>
+</section></main><footer class="shell"><span>With love from <a href="https://tej9.com">Tej SolPro</a>.</span><span>Color 0.1.0 · MPL-2.0 · Built in the open</span></footer></body></html>

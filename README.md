@@ -4,7 +4,9 @@
 
 Color is a deterministic, provenance-aware toolkit that helps coding and design agents turn creative direction and locked brand colors into accessible semantic interface tokens.
 
-> **Project status:** foundation stage. The public contracts and validation primitives are being built before the historical palette corpus is introduced.
+> **Project status:** `0.1.0` development release. The One Brand Color Compiler
+> is working in the core package, CLI, and browser playground. Registry packages
+> and historical palette sources have not been released yet.
 
 ## Why Color
 
@@ -34,18 +36,40 @@ creative brief + optional brand colors
  semantic tokens + evidence + alternatives
 ```
 
-## First public API
+## One Brand Color Compiler
 
-The initial package exposes standards-based contrast utilities while the complete solver contract is developed:
+Keep one brand color locked while Color derives the supporting semantic roles,
+audits every intended pair, records how each token was produced, and returns a
+versioned result that an AI agent can inspect.
 
 ```ts
-import { auditPair } from "@tejsolpro/color";
+import { compileOneBrandTheme, exportThemeCss } from "@tejsolpro/color";
 
-const result = auditPair("#1c1a17", "#f3efe7");
+const theme = compileOneBrandTheme({
+  brand: "#9d3f2d",
+  canvas: "#f3efe7",
+});
 
-console.log(result.ratio);      // 15.13 (truncated, never rounded up)
-console.log(result.normalText); // WCAG AA result
+console.log(theme.tokens.primary);       // #9d3f2d — unchanged
+console.log(theme.allRequiredPairsPass); // true
+console.log(exportThemeCss(theme));      // CSS custom properties
 ```
+
+The result includes eleven semantic tokens, exact WCAG 2.2 pair audits, schema
+and algorithm versions, and token-level provenance. See the
+[compiler documentation](https://tejsolpro.github.io/color/compiler/) and try
+the [live playground](https://tejsolpro.github.io/color/playground/).
+
+## CLI
+
+```bash
+solpro-color theme "#9d3f2d" --canvas "#f3efe7"
+solpro-color theme "#9d3f2d" --format css
+solpro-color contrast "#1c1a17" "#f3efe7"
+```
+
+The CLI is non-interactive: JSON is the default theme output so coding agents
+can consume it without scraping prose.
 
 ## Repository map
 
@@ -93,6 +117,8 @@ code change.
 ## Roadmap
 
 The planned V1 includes a versioned source registry, structured brief schema, candidate ranking, semantic role assignment, WCAG 2.2 auditing, CSS and DTCG exporters, a CLI, and an evaluation harness. See [ROADMAP.md](ROADMAP.md).
+
+Release history is maintained in [CHANGELOG.md](CHANGELOG.md).
 
 ## Data and provenance
 

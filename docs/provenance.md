@@ -17,3 +17,17 @@ Sources without a clear redistribution basis must not be committed. Scans, edito
 Generated ramps and semantic tokens must retain ancestry back to their input colors. Transformations should record both their operation and perceptual distance.
 
 The first historical corpus will not be published until its source and redistribution terms have been documented in a source ledger.
+
+## Generated-token provenance in 0.1.0
+
+`compileOneBrandTheme()` returns a provenance entry for every semantic token.
+Each entry identifies its input or upstream token sources and states the
+deterministic method used to produce it. The result also records schema version
+`0.1.0` and algorithm version `srgb-v0.1` so an agent can distinguish contract
+changes from color-input changes.
+
+The request's brand and canvas values are locked inputs: hexadecimal shorthand
+may be expanded and letter case normalized, but their color values are not
+altered. Generated supporting roles use documented sRGB mixing in this release.
+Future perceptual transformations must use a new algorithm version and retain a
+migration record rather than silently changing existing results.

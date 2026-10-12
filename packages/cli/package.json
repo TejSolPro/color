@@ -1,6 +1,6 @@
 {
   "name": "@tejsolpro/color-cli",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Command-line interface for Color by Tej SolPro.",
   "type": "module",
   "license": "MPL-2.0",

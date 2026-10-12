@@ -25,3 +25,34 @@ The host agent may translate a user's brief into a schema. It must not replace t
 - `evals`: reproducible briefs, fixtures, metrics, and review protocol.
 
 The canonical output is vendor-neutral. MCP, plugins, and framework formats remain adapters rather than alternate implementations.
+
+## Implemented in 0.1.0
+
+The first vertical slice is the One Brand Color Compiler:
+
+```text
+locked brand + optional locked canvas
+                    ↓
+          compileOneBrandTheme()
+                    ↓
+ semantic tokens + exact pair audits + provenance
+                    ↓
+             JSON or CSS export
+```
+
+The result declares schema version `0.1.0` and algorithm version `srgb-v0.1`.
+The request's brand and canvas are normalized but never altered. Supporting
+roles may be derived from them using documented sRGB mixes. Each intended text,
+control-boundary, and focus pair carries its own WCAG 2.2 criterion, required
+ratio, measured ratio, and pass result.
+
+The browser playground imports this core implementation during the Pages build.
+It must not reimplement the compiler. The CLI is likewise a parser and formatter
+over the same public functions.
+
+## Current boundaries
+
+Version `0.1.0` does not interpret a natural-language brief, rank historical
+palettes, solve dark mode, or export framework-specific formats. Those remain
+separate roadmap layers and must reuse the canonical theme contract rather than
+forking it.

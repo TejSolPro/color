@@ -20,6 +20,7 @@ body {
   line-height: 1.5;
 }
 a { color: inherit; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 .shell { width: var(--shell); margin-inline: auto; }
 
 .nav {
@@ -125,6 +126,7 @@ h2 { font-size: clamp(42px, 6.5vw, 82px); }
 .content-section + .content-section { border-top: 1px solid var(--line); }
 .content-section h2 { font-size: clamp(38px, 5vw, 64px); }
 .intro-grid { display: grid; grid-template-columns: .8fr 1.8fr; gap: 60px; }
+.intro-grid > *, .article-layout > *, .section-heading > * { min-width: 0; }
 .prose { max-width: 760px; }
 .prose p, .prose li { font-size: 18px; line-height: 1.7; }
 .prose h2 { margin-top: 70px; }
@@ -148,18 +150,26 @@ h2 { font-size: clamp(42px, 6.5vw, 82px); }
 input[type="color"] { width: 52px; height: 48px; padding: 3px; border: 1px solid var(--line); background: transparent; }
 input[type="text"] { width: 100%; min-height: 48px; padding: 0 14px; color: var(--ink); background: #fffaf2; border: 1px solid var(--line); border-radius: 0; font: inherit; text-transform: uppercase; }
 .tool-note { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 13px; color: rgba(28,26,23,.7); }
+.tool-version { margin: 8px 0 0; color: rgba(28,26,23,.68); font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
 .generated-preview { min-height: 220px; margin: 28px 0; padding: 34px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); }
 .preview-button { align-self: flex-start; padding: 12px 17px; border-radius: 999px; font-weight: 750; }
 .token-list { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); }
 .token { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; padding: 12px; background: var(--paper); }
 .token-swatch { width: 44px; height: 44px; border: 1px solid rgba(28,26,23,.15); background: var(--token); }
+.token-sample { display: grid; place-items: center; font-style: normal; font-weight: 800; }
 .token span { font-size: 13px; }
 .token b { font-size: 12px; font-family: ui-monospace, monospace; }
-.tool-actions { display: flex; gap: 12px; margin-top: 22px; }
+.tool-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
 button.button { cursor: pointer; font: inherit; }
 .button-secondary { color: var(--ink); background: transparent; }
 .button-secondary:hover { color: var(--paper); }
 .result-message { min-height: 24px; font-size: 13px; font-weight: 700; }
+
+/* Compiler */
+.compiler-role-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; margin-top: 70px; background: var(--line); border: 1px solid var(--line); }
+.compiler-role-grid article { min-height: 230px; padding: 26px; background: var(--paper); }
+.compiler-role-grid b { font: 400 29px/1.05 Georgia, serif; }
+.compiler-role-grid p { margin-top: 55px; color: rgba(28,26,23,.72); }
 
 /* Recipes and examples */
 .recipe-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -226,7 +236,7 @@ footer a { font-weight: 750; text-underline-offset: 4px; }
   .agent-flow li { min-height: 74px; border-right: 0; border-bottom: 1px solid var(--line); }
   .agent-flow li:not(:last-child)::after { content: "↓"; right: 18px; top: auto; bottom: -10px; }
   .manifesto, .section-heading, .evidence-grid { grid-template-columns: 1fr; }
-  .pipeline ol, .roadmap-grid, .feature-grid, .card-grid, .recipe-grid { grid-template-columns: 1fr; }
+  .pipeline ol, .roadmap-grid, .feature-grid, .card-grid, .recipe-grid, .compiler-role-grid { grid-template-columns: 1fr; }
   .tool-layout, .intro-grid, .example { grid-template-columns: 1fr; }
   .article-layout { grid-template-columns: 1fr; gap: 38px; }
   .article-menu { position: static; grid-template-columns: 1fr 1fr; }
@@ -236,6 +246,8 @@ footer a { font-weight: 750; text-underline-offset: 4px; }
   .article-ending { align-items: flex-start; flex-direction: column; }
   .role-table { display: block; overflow-x: auto; }
   .tool-panel, .tool-output { padding: 20px; }
+  .token { grid-template-columns: 44px minmax(0,1fr); }
+  .token b { grid-column: 2; }
   .pipeline li { min-height: 190px; border-right: 0; border-bottom: 1px solid var(--line); padding-left: 0 !important; }
   .closing { padding: 45px 28px; flex-direction: column; align-items: flex-start; gap: 35px; }
   footer { flex-direction: column; gap: 8px; }

@@ -1,16 +1,60 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta name="description" content="Developer documentation for Color by Tej SolPro." /><title>Documentation · Color by Tej SolPro</title><link rel="icon" href="../favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="../styles.css" /></head>
-<body><header class="nav shell"><a class="brand" href="../"><span class="brand-mark"></span><span>Color <small>by Tej SolPro</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="../playground/">Playground</a><a href="../recipes/">Recipes</a><a href="../guides/">Guides</a><a href="../examples/">Examples</a><a aria-current="page" href="./">Docs</a><a class="button button-small" href="https://github.com/TejSolPro/color" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></header>
-<main><section class="page-hero shell"><div class="breadcrumbs"><a href="../">Home</a> / Documentation</div><p class="eyebrow">Early developer preview</p><h1>Transparent inputs.<br /><em>Portable outputs.</em></h1><p class="lede">The core is deliberately small today. Its first reliable primitive calculates WCAG contrast without network access or model dependencies.</p></section>
-<section class="content-section shell"><div class="intro-grid"><div><p class="section-number">Install</p></div><div class="prose"><h2>Current status</h2><p>Color is in foundation development and has not yet been published to a package registry. Clone the repository to inspect or contribute to the TypeScript workspace.</p><pre class="code-block"><code>git clone https://github.com/TejSolPro/color.git
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="API and CLI documentation for the open-source One Brand Color Compiler." />
+    <link rel="canonical" href="https://tejsolpro.github.io/color/documentation/" />
+    <title>Documentation · Color by Tej SolPro</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="nav shell"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true"></span><span>Color <small>by Tej SolPro</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="../compiler/">Compiler</a><a href="../playground/">Playground</a><a href="../recipes/">Recipes</a><a href="../guides/">Guides</a><a href="../examples/">Examples</a><a aria-current="page" href="./">Docs</a><a class="button button-small" href="https://github.com/TejSolPro/color" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></header>
+    <main>
+      <section class="page-hero shell"><div class="breadcrumbs"><a href="../">Home</a> / Documentation</div><p class="eyebrow">Development release · 0.1.0</p><h1>One engine.<br /><em>Inspectable outputs.</em></h1><p class="lede">Compile a locked brand color into semantic roles, pair-specific accessibility evidence, provenance, versioned JSON, and CSS—without a network request or model dependency.</p></section>
+
+      <section class="content-section shell"><div class="intro-grid"><div><p class="section-number">Install</p></div><div class="prose"><h2>Use the repository today</h2><p>Color has not yet been published to a package registry. Clone the repository to use or contribute to the TypeScript workspace.</p><pre class="code-block"><code>git clone https://github.com/TejSolPro/color.git
 cd color
 pnpm install
-pnpm test</code></pre></div></div></section>
-<section class="content-section shell"><div class="intro-grid"><div><p class="section-number">Core API</p></div><div class="prose"><h2>Contrast primitives</h2><p>The core exposes deterministic utilities for parsing hexadecimal colors, calculating relative luminance, producing contrast ratios, and evaluating common WCAG thresholds.</p><pre class="code-block"><code>import { contrastRatio, auditPair } from "@tejsolpro/color";
+pnpm typecheck
+pnpm test
+pnpm build</code></pre><p>Public API stability begins at 1.0.0. Until then, pin the commit or release you evaluate.</p></div></div></section>
 
-const ratio = contrastRatio("#1C1A17", "#F3EFE7");
-const result = auditPair("#1C1A17", "#F3EFE7");
+      <section class="content-section shell"><div class="intro-grid"><div><p class="section-number">Theme API</p></div><div class="prose"><h2>Compile one brand color</h2><p><code>compileOneBrandTheme()</code> accepts a required hexadecimal brand color and an optional canvas. The default canvas is <code>#f3efe7</code>.</p><pre class="code-block"><code>import {
+  compileOneBrandTheme,
+  exportThemeCss,
+} from "@tejsolpro/color";
 
-// result: { ratio, aaNormal, aaLarge, aaaNormal, aaaLarge }</code></pre><p>API names may evolve before the first tagged release. Pin a commit if you experiment with the project today.</p></div></div></section>
-<section class="content-section shell"><div class="card-grid"><article class="card"><span class="status">Design</span><h3>Architecture</h3><p>Understand the boundary between deterministic core logic, delivery adapters, and future agent integrations.</p><a href="https://github.com/TejSolPro/color/blob/main/docs/architecture.md" target="_blank" rel="noopener noreferrer">Read architecture ↗</a></article><article class="card"><span class="status">Trust</span><h3>Provenance</h3><p>See how source data and generated transformations are expected to retain their history.</p><a href="https://github.com/TejSolPro/color/blob/main/docs/provenance.md" target="_blank" rel="noopener noreferrer">Read provenance ↗</a></article><article class="card"><span class="status">Community</span><h3>Contributing</h3><p>Review development expectations, scope, and the contribution process on GitHub.</p><a href="https://github.com/TejSolPro/color/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribute ↗</a></article></div></section>
-</main><footer class="shell"><span>With love from <a href="https://tej9.com">Tej SolPro</a>.</span><span>MPL-2.0 · Built in the open</span></footer></body></html>
+const theme = compileOneBrandTheme({
+  brand: "#9d3f2d",
+  canvas: "#f3efe7",
+});
+
+console.log(theme.schemaVersion);        // "0.1.0"
+console.log(theme.algorithm);            // "srgb-v0.1"
+console.log(theme.tokens.primary);       // "#9d3f2d"
+console.log(theme.allRequiredPairsPass); // true
+console.log(exportThemeCss(theme));</code></pre><p>The result contains eleven semantic tokens, nine intended-pair audits, and provenance for every token. The supplied brand and canvas remain locked.</p></div></div></section>
+
+      <section class="content-section shell"><div class="intro-grid"><div><p class="section-number">CLI</p></div><div class="prose"><h2>Machine-readable by default</h2><pre class="code-block"><code># Versioned JSON with tokens, evidence, and provenance
+solpro-color theme "#9d3f2d" --canvas "#f3efe7"
+
+# CSS custom properties
+solpro-color theme "#9d3f2d" --format css
+
+# Audit one exact foreground/background pair
+solpro-color contrast "#171512" "#f3efe7"</code></pre><p>The CLI is non-interactive and writes results to standard output, which makes it suitable for coding agents, scripts, and CI pipelines.</p></div></div></section>
+
+      <section class="content-section shell"><div class="intro-grid"><div><p class="section-number">Contrast API</p></div><div class="prose"><h2>Audit exact pairs</h2><pre class="code-block"><code>import { contrastRatio, auditPair } from "@tejsolpro/color";
+
+const ratio = contrastRatio("#171512", "#f3efe7");
+const result = auditPair("#171512", "#f3efe7");
+
+// result.normalText, result.largeText, result.nonText</code></pre><p>Displayed ratios are truncated to two decimals, never rounded up, so a failing pair cannot appear to meet its threshold.</p></div></div></section>
+
+      <section class="content-section shell"><div class="card-grid"><article class="card"><span class="status">Version</span><h3>Release history</h3><p>See what changed, what remains experimental, and the known boundaries of each release.</p><a href="https://github.com/TejSolPro/color/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">Read changelog ↗</a></article><article class="card"><span class="status">Design</span><h3>Architecture</h3><p>Understand the boundary between deterministic core logic, delivery adapters, and future agent integrations.</p><a href="https://github.com/TejSolPro/color/blob/main/docs/architecture.md" target="_blank" rel="noopener noreferrer">Read architecture ↗</a></article><article class="card"><span class="status">Trust</span><h3>Provenance</h3><p>See how source inputs and generated transformations retain their history.</p><a href="https://github.com/TejSolPro/color/blob/main/docs/provenance.md" target="_blank" rel="noopener noreferrer">Read provenance ↗</a></article></div></section>
+    </main>
+    <footer class="shell"><span>With love from <a href="https://tej9.com">Tej SolPro</a>.</span><span>Color 0.1.0 · MPL-2.0 · Built in the open</span></footer>
+  </body>
+</html>

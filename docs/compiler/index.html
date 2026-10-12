@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Compile one locked brand color into accessible semantic interface tokens, exact WCAG evidence, versioned JSON, and CSS." />
+    <meta name="theme-color" content="#f3efe7" />
+    <link rel="canonical" href="https://tejsolpro.github.io/color/compiler/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="One Brand Color Compiler · Color by Tej SolPro" />
+    <meta property="og:description" content="Keep the brand color. Generate the supporting interface system with evidence." />
+    <meta property="og:url" content="https://tejsolpro.github.io/color/compiler/" />
+    <title>One Brand Color Compiler · Color by Tej SolPro</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="nav shell">
+      <a class="brand" href="../"><span class="brand-mark" aria-hidden="true"></span><span>Color <small>by Tej SolPro</small></span></a>
+      <nav class="site-nav" aria-label="Primary navigation"><a aria-current="page" href="./">Compiler</a><a href="../playground/">Playground</a><a href="../recipes/">Recipes</a><a href="../guides/">Guides</a><a href="../examples/">Examples</a><a href="../documentation/">Docs</a><a class="button button-small" href="https://github.com/TejSolPro/color" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav>
+    </header>
+
+    <main>
+      <section class="page-hero shell">
+        <div class="breadcrumbs"><a href="../">Home</a> / One Brand Color Compiler</div>
+        <p class="eyebrow">Available now · Version 0.1.0</p>
+        <h1>Keep the brand color.<br /><em>Generate the system around it.</em></h1>
+        <p class="lede">The One Brand Color Compiler turns one locked brand color and an optional canvas into semantic interface tokens, exact WCAG 2.2 evidence, versioned JSON, and implementation-ready CSS.</p>
+        <div class="actions"><a class="button" href="../playground/">Compile a brand color</a><a class="text-link" href="#agent-use">Use it from code ↓</a></div>
+      </section>
+
+      <section class="content-section shell">
+        <div class="section-heading"><p class="section-number">01 / What it returns</p><h2>Eleven roles.<br />Every one explained.</h2></div>
+        <div class="compiler-role-grid">
+          <article><b>Foundation</b><p>Canvas, surface, default text, and readable muted text.</p></article>
+          <article><b>Action</b><p>Locked primary, on-primary label, hover state, subtle surface, and a visible boundary.</p></article>
+          <article><b>Access</b><p>Meaningful neutral border and keyboard focus ring, both tested against the canvas.</p></article>
+          <article><b>Evidence</b><p>Exact pairs, criteria, required ratios, measured ratios, decisions, and provenance.</p></article>
+        </div>
+      </section>
+
+      <section class="evidence">
+        <div class="shell evidence-grid">
+          <div><p class="section-number">02 / The promise</p><h2>The input stays locked.</h2></div>
+          <div class="principles">
+            <article><span>Preserve</span><p>The supplied brand and canvas are normalized, never silently replaced or “improved.”</p></article>
+            <article><span>Derive</span><p>Supporting colors use documented deterministic transformations instead of model improvisation.</p></article>
+            <article><span>Audit</span><p>Text, hover, boundaries, and focus are tested as the exact pairs people will see.</p></article>
+            <article><span>Inspect</span><p>Schema version, algorithm version, and token-level provenance travel with the result.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section shell" id="agent-use">
+        <div class="intro-grid">
+          <div><p class="section-number">03 / For agents and code</p></div>
+          <div class="prose">
+            <h2>Structured in.<br />Structured out.</h2>
+            <p>Agents do not need to interpret a screenshot or scrape design advice. They can call the core function or CLI and receive stable semantic names with evidence.</p>
+            <pre class="code-block"><code>import {
+  compileOneBrandTheme,
+  exportThemeCss,
+} from "@tejsolpro/color";
+
+const theme = compileOneBrandTheme({
+  brand: "#9d3f2d",
+  canvas: "#f3efe7",
+});
+
+theme.tokens.primary;       // "#9d3f2d" — unchanged
+theme.allRequiredPairsPass; // true
+exportThemeCss(theme);      // :root { ... }</code></pre>
+            <pre class="code-block"><code>solpro-color theme "#9d3f2d" --canvas "#f3efe7"
+solpro-color theme "#9d3f2d" --format css</code></pre>
+            <p>The packages are currently consumed from the repository and are not yet published to a package registry. The browser playground is ready to use now.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section shell">
+        <div class="intro-grid">
+          <div><p class="section-number">04 / Honest boundaries</p></div>
+          <div class="prose"><h2>Focused by design.</h2><p>Version 0.1.0 does not interpret a creative brief, select historical palettes, generate dark mode, or export framework-specific configurations. It solves one narrower problem completely: extend a locked brand color into a traceable first interface system.</p><p>Those larger capabilities remain on the public roadmap and will reuse this contract rather than replacing it with vendor-specific logic.</p></div>
+        </div>
+      </section>
+
+      <section class="closing shell"><p>One color in. A system your agent can defend.</p><a class="button button-light" href="../playground/">Try the live compiler</a></section>
+    </main>
+    <footer class="shell"><span>With love from <a href="https://tej9.com">Tej SolPro</a>.</span><span>Color 0.1.0 · MPL-2.0 · Built in the open</span></footer>
+  </body>
+</html>
