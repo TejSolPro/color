@@ -1,0 +1,15 @@
+{
+  "name": "Tej SolPro",
+  "plugins": [
+    {
+      "name": "color-by-tej-solpro",
+      "source": { "path": "../../plugins/color-by-tej-solpro" },
+      "interface": { "displayName": "Color by Tej SolPro" },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "NONE"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}
