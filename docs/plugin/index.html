@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Use Color by Tej SolPro inside ChatGPT and Codex to compile accessible semantic color systems and audit WCAG contrast." />
+    <link rel="canonical" href="https://tejsolpro.github.io/color/plugin/" />
+    <title>ChatGPT and Codex Plugin · Color by Tej SolPro</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <header class="nav shell"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true"></span><span>Color <small>by Tej SolPro</small></span></a><nav class="site-nav" aria-label="Primary navigation"><a href="../compiler/">Compiler</a><a href="../playground/">Playground</a><a href="../guides/">Guides</a><a href="../examples/">Examples</a><a href="../documentation/">Docs</a><a class="button button-small" href="https://github.com/TejSolPro/color" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></header>
+    <main>
+      <section class="page-hero shell"><div class="breadcrumbs"><a href="../">Home</a> / Plugin</div><p class="eyebrow">Local developer preview · Public review not yet submitted</p><h1>Color intelligence,<br /><em>inside the conversation.</em></h1><p class="lede">Ask ChatGPT or Codex for an accessible theme, semantic design tokens, implementation-ready CSS, or an exact WCAG contrast audit. The plugin calls the same deterministic engine used by the CLI and live playground.</p><div class="actions"><a class="button" href="#try">Run the local preview</a><a class="text-link" href="https://github.com/TejSolPro/color/tree/main/packages/mcp" target="_blank" rel="noopener noreferrer">Inspect the source ↗</a></div></section>
+
+      <section class="content-section shell"><div class="intro-grid"><div><p class="section-number">What works</p></div><div class="prose"><h2>Two focused, read-only tools</h2><h3>Compile an accessible color theme</h3><p>Give the plugin one locked brand color and an optional canvas. It returns eleven semantic tokens, nine WCAG 2.2 pair audits, token-level provenance, CSS custom properties, and a visual interface preview.</p><h3>Audit one exact contrast pair</h3><p>Provide a foreground and background. The plugin returns the precise ratio plus normal-text, large-text, and non-text results.</p><div class="guide-callout"><b>No accounts. No write actions.</b><p>The developer preview does not sign users in, modify external services, or store color projects.</p></div></div></div></section>
+
+      <section class="content-section shell"><div class="intro-grid"><div><p class="section-number">Architecture</p></div><div class="prose"><h2>One engine, another adapter</h2><pre class="code-block"><code>Your request in ChatGPT or Codex
+              ↓
+       read-only MCP tool
+              ↓
+  @tejsolpro/color core compiler
+              ↓
+tokens + evidence + provenance + CSS
+              ↓
+ optional in-chat visual result</code></pre><p>The model does not invent the accessibility result. The plugin validates hexadecimal inputs, calls the shared compiler, and returns structured evidence the model can explain.</p></div></div></section>
+
+      <section class="content-section shell" id="try"><div class="intro-grid"><div><p class="section-number">Try locally</p></div><div class="prose"><h2>Developer preview setup</h2><ol class="checklist"><li>Clone the repository and run <code>pnpm install</code>.</li><li>Start the server with <code>pnpm --filter @tejsolpro/color-mcp dev</code>.</li><li>In ChatGPT Plugins, choose <strong>Add custom MCP server</strong>.</li><li>Enter <code>http://localhost:8787/mcp</code> and choose no authentication.</li><li>Create the personal plugin and test: “Create an accessible interface theme from #635BFF.”</li></ol><p>This localhost flow is for development only. Public directory submission requires a stable HTTPS endpoint; that deployment is the next release step.</p></div></div></section>
+
+      <section class="content-section shell"><div class="intro-grid"><div><p class="section-number">Boundaries</p></div><div class="prose"><h2>What it does not claim</h2><ul><li>It does not extract colors from uploaded images yet.</li><li>It does not generate dark mode yet.</li><li>It does not make unsupported color-psychology claims.</li><li>It does not replace human design review.</li><li>It is not yet published in the public plugin directory.</li></ul><p>These boundaries keep the first plugin useful, testable, and honest.</p></div></div></section>
+    </main>
+    <footer class="shell"><span>With love from <a href="https://tej9.com">Tej SolPro</a>.</span><span><a href="../privacy/">Privacy</a> · <a href="../support/">Support</a> · <a href="../terms/">Terms</a></span><span>Plugin preview 0.1.0</span></footer>
+  </body>
+</html>

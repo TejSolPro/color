@@ -1,0 +1,35 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "color-by-tej-solpro",
+  "version": "0.1.0",
+  "description": "Compile accessible semantic color tokens and audit WCAG contrast from exact hex colors.",
+  "author": {
+    "name": "Tej SolPro",
+    "url": "https://tej9.com"
+  },
+  "homepage": "https://tejsolpro.github.io/color/",
+  "repository": "https://github.com/TejSolPro/color",
+  "license": "MPL-2.0",
+  "keywords": ["accessibility", "color", "design-tokens", "wcag"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Color by Tej SolPro",
+        "shortDescription": "Accessible color systems from exact brand colors.",
+        "longDescription": "Turn one locked brand color into deterministic semantic interface tokens, inspect WCAG 2.2 evidence, and export implementation-ready CSS.",
+        "developerName": "Tej SolPro",
+        "category": "Developer Tools",
+        "capabilities": ["Read"],
+        "websiteURL": "https://tejsolpro.github.io/color/",
+        "privacyPolicyURL": "https://tejsolpro.github.io/color/privacy/",
+        "termsOfServiceURL": "https://tejsolpro.github.io/color/terms/",
+        "defaultPrompt": [
+          "Create an accessible interface theme from #635BFF.",
+          "Check whether #475569 on #FFFFFF passes WCAG contrast.",
+          "Generate semantic color tokens and CSS from my brand color #9D3F2D."
+        ],
+        "brandColor": "#9D3F2D"
+      }
+    }
+  }
+}

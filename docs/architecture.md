@@ -21,6 +21,7 @@ The host agent may translate a user's brief into a schema. It must not replace t
 - `core`: ranking, role assignment, transformation, and auditing;
 - `export-*`: adapters from canonical tokens;
 - `cli`: a thin, non-interactive wrapper;
+- `mcp`: a stateless, read-only ChatGPT and Codex adapter with optional UI;
 - `skills`: agent instructions that invoke the same engine;
 - `evals`: reproducible briefs, fixtures, metrics, and review protocol.
 
@@ -49,6 +50,24 @@ ratio, measured ratio, and pass result.
 The browser playground imports this core implementation during the Pages build.
 It must not reimplement the compiler. The CLI is likewise a parser and formatter
 over the same public functions.
+
+## ChatGPT and Codex adapter
+
+The MCP server in `packages/mcp` exposes two read-only tools over the same core:
+
+```text
+compile_color_theme ─┐
+                     ├→ @tejsolpro/color → structured MCP result
+audit_color_contrast ┘                         ↓
+                                      optional visual component
+```
+
+It validates hexadecimal inputs at the protocol boundary, returns structured
+content as the source of truth, and provides plain text so hosts without the
+visual component remain useful. The server is stateless and does not require
+authentication in the developer preview. The portable local package lives in
+`plugins/color-by-tej-solpro`; production submission will replace its localhost
+endpoint with a stable public HTTPS endpoint.
 
 ## Current boundaries
 

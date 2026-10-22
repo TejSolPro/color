@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Color by Tej SolPro result</title>
+    <style>
+      :root { color-scheme: light dark; font: 15px/1.45 Inter, ui-sans-serif, system-ui, sans-serif; }
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 12px; background: transparent; color: #171512; }
+      main { overflow: hidden; border: 1px solid #d6d0c5; border-radius: 18px; background: #f3efe7; box-shadow: 0 12px 30px rgb(23 21 18 / 10%); }
+      header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px; }
+      h2, p { margin: 0; }
+      h2 { font-size: 1.1rem; }
+      .eyebrow { color: #625d55; font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+      .status { border-radius: 999px; padding: 5px 9px; background: #e2f4e8; color: #164c2b; font-size: .78rem; font-weight: 700; }
+      .preview { margin: 0 18px; padding: 18px; border: 1px solid var(--color-primary-border, #8b8175); border-radius: 14px; background: var(--color-surface, #fff); color: var(--color-text, #171512); }
+      .preview h3 { margin: 0 0 6px; font-size: 1.25rem; }
+      .preview p { color: var(--color-text-muted, #5f5a52); }
+      .preview button { margin-top: 16px; border: 1px solid var(--color-primary-border, transparent); border-radius: 10px; padding: 9px 13px; background: var(--color-primary, #9d3f2d); color: var(--color-on-primary, #fff); font: inherit; font-weight: 700; }
+      .tokens { display: grid; grid-template-columns: repeat(auto-fit, minmax(115px, 1fr)); gap: 8px; padding: 14px 18px 18px; }
+      .token { min-width: 0; overflow: hidden; border: 1px solid #d6d0c5; border-radius: 11px; background: #fff; }
+      .swatch { height: 44px; border-bottom: 1px solid #d6d0c5; }
+      .token div:last-child { padding: 7px 8px; }
+      .token strong, .token span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .token strong { font-size: .73rem; }
+      .token span { color: #625d55; font: .72rem ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .contrast { display: grid; grid-template-columns: 1fr 1fr; min-height: 112px; margin: 0 18px 18px; overflow: hidden; border: 1px solid #d6d0c5; border-radius: 14px; }
+      .contrast > div { display: grid; place-items: center; padding: 18px; text-align: center; }
+      .ratio { font-size: 2rem; font-weight: 800; }
+      .checks { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 18px 18px; }
+      .check { border-radius: 999px; padding: 5px 8px; font-size: .78rem; font-weight: 700; }
+      .pass { background: #e2f4e8; color: #164c2b; }
+      .fail { background: #fde7e7; color: #7b2020; }
+      [hidden] { display: none !important; }
+      @media (prefers-color-scheme: dark) {
+        body { color: #f3efe7; }
+        main { border-color: #4a4640; background: #24211e; }
+        .eyebrow { color: #bdb5aa; }
+        .token { border-color: #4a4640; background: #302c28; }
+        .token span { color: #c9c1b7; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div><p class="eyebrow">Color by Tej SolPro</p><h2 id="title">Color intelligence result</h2></div>
+        <span class="status" id="status">Ready</span>
+      </header>
+      <section id="theme" hidden>
+        <div class="preview"><h3>Accessible interface preview</h3><p>Semantic colors compiled from one locked brand color.</p><button type="button">Primary action</button></div>
+        <div class="tokens" id="tokens"></div>
+      </section>
+      <section id="contrast" hidden>
+        <div class="contrast" id="contrast-pair"><div id="foreground"><span>Foreground</span></div><div id="background"><span>Background</span></div></div>
+        <div class="checks" id="checks"></div>
+      </section>
+    </main>
+    <script type="module">
+      const themeSection = document.querySelector("#theme");
+      const contrastSection = document.querySelector("#contrast");
+      const tokensElement = document.querySelector("#tokens");
+      const titleElement = document.querySelector("#title");
+      const statusElement = document.querySelector("#status");
+
+      const cssNames = {
+        canvas: "canvas",
+        surface: "surface",
+        text: "text",
+        mutedText: "text-muted",
+        primary: "primary",
+        onPrimary: "on-primary",
+        primaryHover: "primary-hover",
+        primarySubtle: "primary-subtle",
+        border: "border",
+        primaryBorder: "primary-border",
+        focusRing: "focus-ring",
+      };
+      const renderTheme = (result) => {
+        themeSection.hidden = false;
+        contrastSection.hidden = true;
+        titleElement.textContent = `Theme from ${result.theme.request.brand}`;
+        statusElement.textContent = result.theme.allRequiredPairsPass ? "All checks pass" : "Review needed";
+        tokensElement.replaceChildren();
+        Object.entries(result.theme.tokens).forEach(([name, value]) => {
+          document.documentElement.style.setProperty(`--color-${cssNames[name]}`, value);
+          const item = document.createElement("article");
+          item.className = "token";
+          const swatch = document.createElement("div");
+          swatch.className = "swatch";
+          swatch.style.background = value;
+          const details = document.createElement("div");
+          const label = document.createElement("strong");
+          label.textContent = name;
+          const hex = document.createElement("span");
+          hex.textContent = value;
+          details.append(label, hex);
+          item.append(swatch, details);
+          tokensElement.append(item);
+        });
+        document.querySelector("main").style.background = result.theme.tokens.canvas;
+      };
+
+      const renderContrast = (result) => {
+        themeSection.hidden = true;
+        contrastSection.hidden = false;
+        const { audit } = result;
+        titleElement.textContent = `${audit.ratio}:1 contrast ratio`;
+        statusElement.textContent = audit.normalText ? "Normal text passes" : "Normal text fails";
+        const foreground = document.querySelector("#foreground");
+        const background = document.querySelector("#background");
+        foreground.style.background = audit.background;
+        foreground.style.color = audit.foreground;
+        foreground.textContent = `Aa · ${audit.foreground}`;
+        background.style.background = audit.foreground;
+        background.style.color = audit.background;
+        background.textContent = `Aa · ${audit.background}`;
+        const checks = document.querySelector("#checks");
+        checks.replaceChildren();
+        [["Normal text", audit.normalText], ["Large text", audit.largeText], ["Non-text", audit.nonText]].forEach(([label, passes]) => {
+          const badge = document.createElement("span");
+          badge.className = `check ${passes ? "pass" : "fail"}`;
+          badge.textContent = `${passes ? "Pass" : "Fail"}: ${label}`;
+          checks.append(badge);
+        });
+      };
+
+      const updateFromResponse = (response) => {
+        const result = response?.structuredContent;
+        if (result?.kind === "theme") renderTheme(result);
+        if (result?.kind === "contrast") renderContrast(result);
+      };
+
+      let rpcId = 0;
+      const pending = new Map();
+      const notify = (method, params) => window.parent.postMessage({ jsonrpc: "2.0", method, params }, "*");
+      const request = (method, params) => new Promise((resolve, reject) => {
+        const id = ++rpcId;
+        pending.set(id, { resolve, reject });
+        window.parent.postMessage({ jsonrpc: "2.0", id, method, params }, "*");
+      });
+
+      window.addEventListener("message", (event) => {
+        if (event.source !== window.parent) return;
+        const message = event.data;
+        if (!message || message.jsonrpc !== "2.0") return;
+        if (typeof message.id === "number") {
+          const waiter = pending.get(message.id);
+          if (!waiter) return;
+          pending.delete(message.id);
+          message.error ? waiter.reject(message.error) : waiter.resolve(message.result);
+          return;
+        }
+        if (message.method === "ui/notifications/tool-result") updateFromResponse(message.params);
+      }, { passive: true });
+
+      try {
+        await request("ui/initialize", {
+          appInfo: { name: "color-by-tej-solpro-widget", version: "0.1.0" },
+          appCapabilities: {},
+          protocolVersion: "2026-01-26",
+        });
+        notify("ui/notifications/initialized", {});
+      } catch (error) {
+        console.error("Could not initialize the MCP Apps bridge", error);
+      }
+    </script>
+  </body>
+</html>

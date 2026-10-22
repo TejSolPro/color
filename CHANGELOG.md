@@ -4,6 +4,19 @@ All notable project changes are recorded here. The project follows semantic
 versioning from the first public development release; APIs may still change
 before `1.0.0`.
 
+## [Unreleased]
+
+### Added
+
+- Stateless MCP server for ChatGPT and Codex with read-only theme-compilation
+  and exact-pair contrast-audit tools.
+- MCP Apps result component with semantic-token swatches, an interface preview,
+  and WCAG pass/fail evidence.
+- Portable local plugin manifest, MCP configuration, and repository marketplace
+  entry for developer testing.
+- Plugin, privacy, support, and terms pages for publication readiness.
+- MCP adapter unit tests and an end-to-end protocol smoke client.
+
 ## [0.1.0] - 2026-10-12
 
 ### Added

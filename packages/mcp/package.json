@@ -1,0 +1,28 @@
+{
+  "name": "@tejsolpro/color-mcp",
+  "version": "0.1.0",
+  "description": "MCP adapter for Color by Tej SolPro.",
+  "type": "module",
+  "private": true,
+  "license": "MPL-2.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "pnpm build && node dist/index.js",
+    "smoke": "node test/smoke-client.mjs",
+    "start": "node dist/index.js",
+    "test": "pnpm build && node --test test/*.test.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "1.7.5",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@tejsolpro/color": "workspace:*",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}

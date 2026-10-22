@@ -21,6 +21,8 @@
 - [x] CSS custom-property exporter for one-brand themes
 - [x] Non-interactive contrast and one-brand-theme CLI
 - [ ] Portable agent skill
+- [x] Read-only MCP adapter for ChatGPT and Codex
+- [x] Optional visual result interface for MCP hosts
 
 ## Proof
 
@@ -31,8 +33,6 @@
 
 ## Later, only after V1 evidence
 
-- [ ] MCP adapter for ChatGPT and Codex
-- [ ] Optional visual comparison interface
 - [ ] Additional licensed palette corpora
 - [ ] Dark-mode solving
 - [ ] Framework-specific exporters

@@ -5,8 +5,9 @@
 Color is a deterministic, provenance-aware toolkit that helps coding and design agents turn creative direction and locked brand colors into accessible semantic interface tokens.
 
 > **Project status:** `0.1.0` development release. The One Brand Color Compiler
-> is working in the core package, CLI, and browser playground. Registry packages
-> and historical palette sources have not been released yet.
+> is working in the core package, CLI, browser playground, and a local developer
+> preview of the ChatGPT/Codex plugin. The public plugin, registry packages, and
+> historical palette sources have not been released yet.
 
 ## Why Color
 
@@ -71,11 +72,33 @@ solpro-color contrast "#1c1a17" "#f3efe7"
 The CLI is non-interactive: JSON is the default theme output so coding agents
 can consume it without scraping prose.
 
+## ChatGPT and Codex plugin
+
+The repository now includes a stateless MCP adapter with two read-only tools:
+
+- `compile_color_theme` returns semantic tokens, WCAG 2.2 evidence, provenance,
+  JSON-compatible structured data, CSS, and an in-chat visual preview;
+- `audit_color_contrast` checks one exact foreground/background pair.
+
+Run the local developer preview with:
+
+```bash
+pnpm --filter @tejsolpro/color-mcp dev
+```
+
+Then connect `http://localhost:8787/mcp` as a custom MCP server in ChatGPT. See
+the [plugin page](https://tejsolpro.github.io/color/plugin/) and
+[`plugins/color-by-tej-solpro/`](plugins/color-by-tej-solpro/) for packaging and
+testing details. A stable public HTTPS deployment is still required before the
+plugin can be submitted to the public directory.
+
 ## Repository map
 
 ```text
 packages/core   deterministic color primitives and public contracts
 packages/cli    non-interactive command-line adapter
+packages/mcp    stateless ChatGPT and Codex MCP adapter with optional UI
+plugins         portable local plugin package for testing and distribution
 docs            project website, architecture, and provenance policy
 .github         contribution templates and automated checks
 ```
